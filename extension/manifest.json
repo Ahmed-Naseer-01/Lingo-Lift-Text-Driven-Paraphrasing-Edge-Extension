@@ -1,0 +1,22 @@
+{
+    "name": "Lingo Lift",
+    "description": "AI-based Smart Paraphrasing Tool",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+        "tabs",
+        "scripting"
+    ],
+    "host_permissions": ["https://*/"],
+    "action": {
+        "default_title": "Lingo Lift",
+        "default_icon": "assets/icons/icon.png",
+        "default_popup": "popup/popup.html"
+    },
+    "icons": {
+        "16": "assets/icons/icon.png",
+        "32": "assets/icons/icon.png",
+        "48": "assets/icons/icon.png",
+        "128": "assets/icons/icon.png"
+    }
+}

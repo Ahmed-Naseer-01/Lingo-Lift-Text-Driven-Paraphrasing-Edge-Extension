@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Use Bootstrap 5 by loading it as a stylesheet from jsDelivr, a free open source CDN -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        
+        <title>Lingo Lift: Paraphrasing Tool</title>
+        
+        <style>
+            /* Customizing box and button styles */
+            .card {
+                background-color: #f8f9fa; /* Set a light background color for the card */
+                border: none; /* Remove borders */
+                box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add a subtle box shadow */
+            }
+            
+            .btn-info {
+                background-color: #007bff; /* Set a vibrant blue background color for the button */
+                border: none; /* Remove borders */
+                position: relative; /* Enable relative positioning for the button */
+                overflow: hidden; /* Hide any overflow from animated elements */
+                animation: buttonPulse 1s infinite; /* Apply the animation effect to the button */
+            }
+            
+            .btn-info:hover {
+                animation-play-state: paused; /* Pause the animation on hover */
+            }
+            
+            @keyframes buttonPulse {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+        </style>
+    </head>
+    <body style="width: 400px; max-height:fit-content" class="pb-2">
+        <div class="container-fluid text-center mt-1">
+            <img src="../assets/icons/icon.png" width="250px">
+
+            <div id="paraphrase" class="mb-2">
+                <div id="paraphrase_card" class="card">
+                    <div class="card-header">
+                        <h5>Smart Paraphrasing Solution</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="text_input">
+                            <!-- Textarea to contain the user's text input -->
+                            <textarea class="form-control m-2" style="font-size: small;" rows="5" id="input_text" placeholder="Select some text on any page or write/paste something..."></textarea>
+                            <button id="submit_text" class="btn btn-info m-2">Rephrase</button>
+    
+                            <!-- Textarea to contain the paraphrased text returned by the server. 
+                                 This should be displayed only after the server returns data. Hence, display
+                                 is initially set to 'none' -->
+                            <div id="paraphrased_result" style="display: none;">
+                                <textarea class="form-control m-2" style="font-size: small;" rows="5" id="paraphrased_text" placeholder="Paraphrased result..."></textarea>
+
+                                <!-- Synonyms of keywords in the paraphrased text will be dynamically populated here --> 
+                                <div id="kw_syn_div" class="mt-3"></div>
+                            </div>
+
+                            <!-- Spinner to be shown while the paraphrased output and synonyms are being fetched from the server -->
+                            <div id="loading" class="mt-3" style="display: none;">
+                                <div class="mb-1" id="loading_text"></div>
+                                <div class="d-flex justify-content-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- To display any error that might be thrown -->
+                            <div id="error_box" class="alert alert-danger m-2 mt-3" role="alert" style="display:none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Include the JavaScript for functionality -->
+        <script type="text/javascript" src="popup.js"></script>
+    </body>
+</html>
